@@ -1,8 +1,10 @@
 const express = require("express")
 const router = express.Router()
 const Data = require("../model/dataModel")
+var cacheService = require("express-api-cache");
+var cache = cacheService.cache;
 
-router.get("/get-data/:number", async (req, res) => {
+router.get("/get-data/:number", cache("10 minutes"), async (req, res) => {
     try {
         const number = req.params.number
         let data = []
