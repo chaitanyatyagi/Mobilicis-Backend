@@ -42,3 +42,6 @@ In the given code below, first we have got those objects who have given car name
 In the given code below, again with the help of aggregation pipeline we have group users of a city then taking average of all users of same city and storing its value in "avgIncome", then sorting in the descreasing order, then sending top 10 cities with most users using $limit operator.
 
 ![a5](https://user-images.githubusercontent.com/84731647/233834437-1c7ecd5a-eef3-48f4-b4d5-31406f322b3f.png)
+
+
+Also I have used express-api-cache to get fast response !
