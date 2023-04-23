@@ -5,16 +5,24 @@ const Data = require("../model/dataModel")
 router.get("/get-data/:number", async (req, res) => {
     try {
         const number = req.params.number
-        console.log(typeof (number))
         let data = []
+
+
+        // To get entire data
         if (number === "0") {
             data = await Data.find()
         }
+
+
+        // To get data for query 1
         else if (number === "1") {
             data = await Data.find({
                 $and: [{ income: { $lt: 5 } }, { $or: [{ car: "BMW" }, { car: "Mercedes-Benz" }] }]
             })
         }
+
+
+        // To get data for query 2
         else if (number === "2") {
             data = await Data.aggregate([
                 {
@@ -29,6 +37,9 @@ router.get("/get-data/:number", async (req, res) => {
                 }
             ])
         }
+
+
+        // To get data for query 3
         else if (number === "3") {
             const curr = await Data.find()
             curr.map((el, key) => {
@@ -37,6 +48,9 @@ router.get("/get-data/:number", async (req, res) => {
                 }
             })
         }
+
+
+        // To get data for query 4
         else if (number === "4") {
             const curr = await Data.find({
                 $or: [{ car: "Audi" }, { car: "Mercedes-Benz" }, { car: "BMW" }]
@@ -54,6 +68,9 @@ router.get("/get-data/:number", async (req, res) => {
                 }
             })
         }
+
+
+        // To get data for query 5
         else {
             data = await Data.aggregate([
                 {
